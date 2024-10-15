@@ -18,22 +18,25 @@ public class ArithmeticBase
  public double x,y;
     double calculate(double x, double y) 
         {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter arithmetic operation to Perform: ");
-        String s = sc.next();
-        switch (s.toUpperCase()) 
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter operation (PLUS, MINUS, TIMES, DIVIDE):");
+        String operationString = in.next().toUpperCase();
+        ArithmeticOperation operation = ArithmeticOperation.valueOf(operationString);
+        switch (operation) 
         {
-            case "PLUS":
+            case PLUS:
                 return x + y;
-            case "MINUS":
+            case MINUS:
                 return x - y;
-            case "TIMES":
+            case TIMES:
                 return x * y;
-            case "DIVIDE":
+            case DIVIDE:
                 return x / y;
             default:
                 throw new AssertionError("Unknown operations " + this);
         }
     }
-   
+   enum ArithmeticOperation {
+    PLUS, MINUS, TIMES, DIVIDE
+}
 }
